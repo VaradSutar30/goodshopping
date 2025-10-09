@@ -21,7 +21,7 @@ const ProfileMenu = () => {
       {isOpen && (
         <div className="absolute  overflow-visible z-50 right-0 mt-2 w-fit px-5 py-2 mr-4 bg-white border border-gray-200 rounded-lg shadow-lg">
           <a href="#" className="px-4 py-2 font-semibold transition-all duration-300 flex items-center space-x-2">
-            <span>Hii! Tushar</span>
+            <span>Hii! Varad</span>
           </a>
           <div className='flex justify-center'>
             <div className='w-[100%] h-[0.1rem] rounded-xl bg-[#f9db32]'></div>

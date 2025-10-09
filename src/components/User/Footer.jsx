@@ -16,9 +16,9 @@ function Footer() {
                         Create to change everything for the better. For everyone.
                     </p>
                     <ul className='md:mt-20 mt-6 flex gap-3'>
-                        <li><a href="https://github.com/iamtushar28" target="_blank"> <TbBrandGithubFilled color='white' size='25px' /> </a></li>
-                        <li><a href="https://www.linkedin.com/in/tushar-suryawanshi-599806299" target="_blank"> <FaLinkedinIn color='white' size='25px' /> </a></li>
-                        <li><a href="https://www.instagram.com/i_am_tushar22" target="_blank"> <RiInstagramFill color='white' size='25px' /> </a></li>
+                        <li><a href="https://github.com/VaradSutar30" target="_blank"> <TbBrandGithubFilled color='white' size='25px' /> </a></li>
+                        <li><a href="https://www.linkedin.com/in/varad-sutar-8a936b287" target="_blank"> <FaLinkedinIn color='white' size='25px' /> </a></li>
+                        <li><a href="https://www.instagram.com/varad2_" target="_blank"> <RiInstagramFill color='white' size='25px' /> </a></li>
                     </ul>
                 </div>
 
