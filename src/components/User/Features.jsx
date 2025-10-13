@@ -19,7 +19,7 @@ const Features = () => {
                             className="h-20 w-20 md:h-40 md:w-40 object-contain md:-ml-8"
                         />
                         <div>
-                            <h2 className="text-lg md:text-2xl font-semibold mb-2">PlayStation</h2>
+                            <h2 className="text-lg md:text-2xl font-semibold mb-2">Iphone<span className='text-bold text-[#fac039]'>11</span></h2>
                             <p className="text-zinc-500 max-w-xs text-sm md:text-base">
                                 Incredibly powerful CPUs, GPUs, and an SSD with integrated I/O will redefine your PlayStation experience.
                             </p>
@@ -35,7 +35,7 @@ const Features = () => {
                         />
                         <div>
                             <h2 className="text-lg md:text-2xl font-semibold mb-2">
-                                Oppo AirPods <span className="font-bold">Max</span>
+                                iPhone 14 <span className="font-bold text-[#fac039]"> Pro Max</span>
                             </h2>
                             <p className="text-zinc-500 max-w-xs text-sm md:text-base">
                                 Computational audio. Listen — it's powerful.
@@ -52,6 +52,12 @@ const Features = () => {
                         alt="Laptop"
                         className="h-48 md:h-[28rem] object-contain"
                     />
+                    <b className="text-lg md:text-2xl font-semibold mb-2">
+                    iPhone 15 <span className="font-bold text-[#fac039]">Pro Max</span>
+                            </b>
+                            <p className="text-zinc-500 max-w-xs text-sm md:text-base">
+                            The iPhone 15 Pro Max features a 6.7-inch Super Retina XDR display, A17 Pro chip, and a 48 MP triple-camera system.
+                            </p>
                 </div>
 
             </section>
