@@ -1,23 +1,51 @@
-import React from 'react'
+import React, { useState } from "react";
 import { CiSearch } from "react-icons/ci";
+import { IoMdClose } from "react-icons/io";
 
-const Searchbar = () => {
-    return (
-        <>
-            <div className="relative">
-                <input
-                    type="text"
-                    placeholder="Search Product..."
-                    name="search"
-                    id="search"
-                    className="block md:hidden w-full px-4 py-2 text-gray-900 border hover:shadow transition-all duration-300 placeholder-gray-500 rounded-md outline-none sm:text-sm"
-                />
-                <div className="absolute inset-y-0 right-0 flex items-center text-zinc-400 pr-3">
-                    <CiSearch size="22px" />
-                </div>
-            </div>
-        </>
-    )
-}
+const Searchbar = ({ onSearch }) => {
+  const [query, setQuery] = useState("");
 
-export default Searchbar
+  const handleSearch = () => {
+    if (onSearch) onSearch(query);
+  };
+
+  const clearSearch = () => {
+    setQuery("");
+    if (onSearch) onSearch("");
+  };
+
+  return (
+    <div className="relative w-full max-w-md">
+
+      {/* INPUT */}
+      <input
+        type="text"
+        placeholder="Search products..."
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        className="w-full pl-4 pr-10 py-2 border rounded-lg outline-none 
+        focus:ring-2 focus:ring-[#fac039] transition shadow-sm focus:shadow-md"
+      />
+
+      {/* SEARCH ICON */}
+      <button
+        onClick={handleSearch}
+        className="absolute right-8 top-2.5 text-gray-400 hover:text-black"
+      >
+        <CiSearch size={20} />
+      </button>
+
+      {/* CLEAR BUTTON */}
+      {query && (
+        <button
+          onClick={clearSearch}
+          className="absolute right-2 top-2.5 text-gray-400 hover:text-red-500"
+        >
+          <IoMdClose size={18} />
+        </button>
+      )}
+    </div>
+  );
+};
+
+export default Searchbar;

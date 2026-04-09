@@ -1,30 +1,72 @@
-import laptop from '../../assets/img/laptop.png'
-import iphone from '../../assets/img/iphone.png'
-
+import React from "react";
+import { motion } from "framer-motion";
+import laptop from "../../assets/img/laptop.png";
+import iphone from "../../assets/img/iphone.png";
 
 function Dealsbanner() {
+  return (
+    <div className="relative w-full overflow-hidden bg-gradient-to-r from-[#141e30] to-[#243b55] py-10 md:py-16">
 
-    return (
-        <>
+      {/* CONTENT */}
+      <div className="max-w-[1200px] mx-auto px-4 flex flex-col items-center text-center">
 
-            <div className="banner md:h-[300px] h-[200px] w-full bg-[#211C24] md:flex justify-center items-center text-center md:text-start flex-row relative">
-                <div className="w-auto text-center">
-                    <h4 className='text-[25px] text-white opacity-[40%] pt-[40px] md:pt-0'>Get.Offer</h4>
-                    <h1 className='md:text-6xl text-xl text-white font-thin mt-2 mb-2'>Big Diwali <span className='font-semibold text-[#fac039]'>Sale</span></h1>
-                    <p className='text-md text-white mt-5 mb-5 opacity-[40%]'>Attractive deals on smartphone, laptops, watches, etc.</p>
-                </div>
+        <motion.h4
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-lg md:text-xl text-gray-300"
+        >
+          Limited Time Offer 🎉
+        </motion.h4>
 
-                <div className="absolute md:right-12 top-8 md:top-12 content-center ">
-                    <img src={laptop} alt="samsung" className="mix-blend-screen md:h-60 h-28" />
-                </div>
-                <div className="absolute md:left-12 content-center top-6 md:top-8 right-2 md:right-0">
-                    <img src={iphone} alt="samsung" className="mix-blend-screen md:h-72 h-32" />
-                </div>
-            </div>
+        <motion.h1
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="text-2xl md:text-6xl text-white font-light mt-2"
+        >
+          Big Diwali{" "}
+          <span className="font-bold text-[#fac039]">Sale</span>
+        </motion.h1>
 
-        </>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="text-gray-300 mt-4 mb-6 max-w-lg"
+        >
+          Attractive deals on smartphones, laptops, watches and more.
+        </motion.p>
 
-    );
+        {/* BUTTON */}
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          className="bg-[#fac039] text-black px-6 py-3 rounded-lg font-semibold shadow-lg"
+        >
+          Shop Now
+        </motion.button>
+      </div>
+
+      {/* LEFT IMAGE (IPHONE) */}
+      <motion.img
+        src={iphone}
+        alt="iphone"
+        className="absolute left-2 md:left-16 top-10 md:top-12 w-24 md:w-44 drop-shadow-2xl"
+        animate={{ y: [0, -15, 0] }}
+        transition={{ duration: 4, repeat: Infinity }}
+      />
+
+      {/* RIGHT IMAGE (LAPTOP) */}
+      <motion.img
+        src={laptop}
+        alt="laptop"
+        className="absolute right-2 md:right-16 bottom-5 md:bottom-10 w-28 md:w-52 drop-shadow-2xl"
+        animate={{ y: [0, -20, 0] }}
+        transition={{ duration: 5, repeat: Infinity }}
+      />
+
+      {/* GLOW EFFECT */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
+    </div>
+  );
 }
 
 export default Dealsbanner;

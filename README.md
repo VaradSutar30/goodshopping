@@ -1,4 +1,4 @@
-# 🧑‍💻 **Mobile Shop Website**
+# 🧑‍💻 **Good Shooping Website**
 
 A fully responsive mobile shop website designed with a user-friendly interface and modern aesthetics. The website allows users to browse, filter, and purchase mobile products with ease. This project showcases my front-end development skills and attention to detail in creating a seamless shopping experience.
 

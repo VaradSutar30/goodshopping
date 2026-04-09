@@ -1,37 +1,47 @@
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef();
 
-  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+  const navItems = ["Home", "Details", "Catalog"];
 
-  const handleDropdownClick = (e) => {
-    e.stopPropagation();
-    toggleDropdown();
-  };
+  // CLOSE DROPDOWN ON OUTSIDE CLICK
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
 
   return (
-    <div className="navbar">
-      <nav className="w-full h-[88px] flex justify-around items-center relative bg-stone-100 shadow-sm">
-        <a href="#" className="font-serif font-bold text-2xl">
-          <span className="text-[#fdc135]">Goodshoo</span>ping
-        </a>
+    <header className="sticky top-0 z-50 backdrop-blur bg-white/80 shadow-sm">
 
-        {/* Desktop Links */}
-        <ul className="md:flex gap-4 hidden">
-          {["Home", "Details", "Catelog"].map((item) => (
+      <nav className="max-w-[1300px] mx-auto px-6 h-[80px] flex justify-between items-center">
+
+        {/* LOGO */}
+        <h1 className="text-2xl font-bold">
+          <span className="text-[#fac039]">Goodshoo</span>ping
+        </h1>
+
+        {/* DESKTOP NAV */}
+        <ul className="hidden md:flex gap-6">
+          {navItems.map((item) => (
             <li key={item}>
               <NavLink
-                to={`/${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`}
+                to={`/${item === "Home" ? "" : item.toLowerCase()}`}
                 className={({ isActive }) =>
-                  `font-semibold font-serif text-[16px] ${
+                  `font-medium ${
                     isActive
-                      ? "py-1 border-b-2 border-[#fac039] text-black"
-                      : "text-zinc-400 hover:text-black"
-                  } transition-all duration-300 cursor-pointer`
+                      ? "text-black border-b-2 border-[#fac039]"
+                      : "text-gray-500 hover:text-black"
+                  }`
                 }
               >
                 {item}
@@ -40,161 +50,77 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Desktop Icons */}
-        <ul className="md:flex gap-4 hidden items-center">
-          {/* Heart Icon */}
-          <li>
-            <NavLink
-              to="/wishlist"
-              className={({ isActive }) =>
-                `font-semibold ${
-                  isActive ? "py-1 text-[#fac039]" : "text-black"
-                } transition-all duration-300 cursor-pointer`
-              }
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 21s-8-4.6-8-10a5 5 0 0110 0 5 5 0 0110 0c0 5.4-8 10-8 10z"
-                />
-              </svg>
-            </NavLink>
-          </li>
+        {/* ICONS */}
+        <div className="hidden md:flex items-center gap-5">
 
-          {/* Cart Icon */}
-          <li>
-            <NavLink
-              to="/cart"
-              className={({ isActive }) =>
-                `font-semibold ${
-                  isActive ? "py-1 text-[#fac039]" : "text-black"
-                } transition-all duration-300 cursor-pointer`
-              }
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3 3h2l.4 2M7 13h10l3-8H6.4M7 13l-1.2 6h13.4M7 13l1.4-6H21"
-                />
-              </svg>
+          {/* CART WITH BADGE */}
+          <div className="relative">
+            <NavLink to="/cart">
+              🛒
+              <span className="absolute -top-2 -right-2 bg-[#fac039] text-xs px-1 rounded-full">
+                2
+              </span>
             </NavLink>
-          </li>
+          </div>
 
-          {/* User Icon */}
-          <li className="relative">
-            <button
-              onClick={handleDropdownClick}
-              className="text-black hover:text-[#fac039] transition-all"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-4.418 0-8 2.239-8 5v1h16v-1c0-2.761-3.582-5-8-5z"
-                />
-              </svg>
+          {/* USER */}
+          <div className="relative" ref={dropdownRef}>
+            <button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+              👤
             </button>
 
-            {/* Dropdown Menu */}
-            {isDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg z-20">
-                <ul className="flex flex-col">
-                  <li>
-                    <NavLink
-                      to="/order"
-                      className="block px-4 py-2 text-black hover:bg-gray-100"
-                    >
-                      My Order
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/"
-                      className="block px-4 py-2 text-black hover:bg-gray-100"
-                    >
-                      Logout
-                    </NavLink>
-                  </li>
-                </ul>
-              </div>
-            )}
-          </li>
-        </ul>
-
-        {/* Mobile Menu Icon */}
-        <div className="block md:hidden">
-          <button
-            className="text-2xl text-black hover:text-[#fac039]"
-            onClick={toggleMobileMenu}
-          >
-            {/* Menu Icon */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
-              className="w-7 h-7"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
+            <AnimatePresence>
+              {isDropdownOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="absolute right-0 mt-2 w-44 bg-white shadow-lg rounded-lg overflow-hidden"
+                >
+                  <NavLink to="/orders" className="block px-4 py-2 hover:bg-gray-100">
+                    My Orders
+                  </NavLink>
+                  <NavLink to="/" className="block px-4 py-2 hover:bg-gray-100">
+                    Logout
+                  </NavLink>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
+
+        {/* MOBILE BUTTON */}
+        <button
+          className="md:hidden text-2xl"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          ☰
+        </button>
       </nav>
 
-      {/* Mobile Menu */}
-      <div
-        className={`md:hidden z-10 absolute flex border-b flex-col-reverse items-center bg-white w-full transition-all duration-300 ease-in-out overflow-hidden ${
-          isMobileMenuOpen ? "max-h-[400px] py-4" : "max-h-0"
-        }`}
-      >
-        <ul className="flex flex-col items-center gap-4">
-          {["Home", "Details", "Catelog"].map((item) => (
-            <li key={item}>
+      {/* MOBILE MENU */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ height: 0 }}
+            animate={{ height: "auto" }}
+            exit={{ height: 0 }}
+            className="md:hidden bg-white shadow-md flex flex-col items-center py-4"
+          >
+            {navItems.map((item) => (
               <NavLink
-                to={`/${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`}
-                className={({ isActive }) =>
-                  `font-semibold text-[16px] ${
-                    isActive
-                      ? "py-1 border-b-2 border-[#fac039] text-black"
-                      : "text-zinc-400 hover:text-black"
-                  } transition-all duration-300 cursor-pointer`
-                }
+                key={item}
+                to={`/${item === "Home" ? "" : item.toLowerCase()}`}
+                className="py-2 text-gray-700"
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item}
               </NavLink>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 };
 

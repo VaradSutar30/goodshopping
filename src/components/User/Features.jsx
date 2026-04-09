@@ -1,68 +1,86 @@
-import React from 'react'
-import Laptop from '../../assets/img/laptop.png'
-import Playstation from '../../assets/img/ip.png'
-import Airpod from '../../assets/img/airpod.png'
+import React from "react";
+import { motion } from "framer-motion";
+import mackbook from "../../assets/img/mackbook.jfif";
+import Playstation from "../../assets/img/ip.png";
+import Airpod from "../../assets/img/airpod.png";
+
+
 
 const Features = () => {
-    return (
-        <>
-            <section className="mb-10 flex flex-col-reverse md:flex-row  bg-blue-900w-full md:h-[34rem] gap-6">
 
-                {/* Left Section */}
-                <div className="w-full md:w-1/2 flex flex-col justify-center gap-6">
 
-                    {/* Playstation Card */}
-                    <div className="flex items-center gap-4 bg-white shadow-md rounded-2xl p-4 md:p-6 hover:shadow-lg transition-all">
-                        <img
-                            src={Playstation}
-                            alt="PlayStation"
-                            className="h-20 w-20 md:h-40 md:w-40 object-contain md:-ml-8"
-                        />
-                        <div>
-                            <h2 className="text-lg md:text-2xl font-semibold mb-2">Iphone<span className='text-bold text-[#fac039]'>11</span></h2>
-                            <p className="text-zinc-500 max-w-xs text-sm md:text-base">
-                                Incredibly powerful CPUs, GPUs, and an SSD with integrated I/O will redefine your PlayStation experience.
-                            </p>
-                        </div>
-                    </div>
 
-                    {/* AirPods Card */}
-                    <div className="flex items-center gap-4 bg-white shadow-md rounded-2xl p-4 md:p-6 hover:shadow-lg transition-all">
-                        <img
-                            src={Airpod}
-                            alt="AirPods"
-                            className="h-20 w-20 md:h-40 md:w-40 object-contain md:-ml-8"
-                        />
-                        <div>
-                            <h2 className="text-lg md:text-2xl font-semibold mb-2">
-                                iPhone 14 <span className="font-bold text-[#fac039]"> Pro Max</span>
-                            </h2>
-                            <p className="text-zinc-500 max-w-xs text-sm md:text-base">
-                                Computational audio. Listen — it's powerful.
-                            </p>
-                        </div>
-                    </div>
+  const items = [
+    {
+      img: Playstation,
+      title: "iPhone 11",
+      desc: "Powerful performance with A13 Bionic chip and great camera.",
+    },
+    {
+      img: Airpod,
+      title: "AirPods Pro",
+      desc: "Immersive sound with noise cancellation and transparency mode.",
+    },
+  ];
 
-                </div>
+  return (
+    <section className="max-w-[1300px] mx-auto px-4 py-12 grid md:grid-cols-2 gap-6">
 
-                {/* Right Section (Laptop) */}
-                <div className="relative w-full md:w-1/2 bg-white flex items-center justify-center rounded-2xl p-4 shadow-md">
-                    <img
-                        src={Laptop}
-                        alt="Laptop"
-                        className="h-48 md:h-[28rem] object-contain"
-                    />
-                    <b className="text-lg md:text-2xl font-semibold mb-2">
-                    iPhone 15 <span className="font-bold text-[#fac039]">Pro Max</span>
-                            </b>
-                            <p className="text-zinc-500 max-w-xs text-sm md:text-base">
-                            The iPhone 15 Pro Max features a 6.7-inch Super Retina XDR display, A17 Pro chip, and a 48 MP triple-camera system.
-                            </p>
-                </div>
+      {/* LEFT SIDE */}
+      <div className="flex flex-col gap-6">
+        {items.map((item, index) => (
+          <motion.div
+            key={index}
+            whileHover={{ scale: 1.03 }}
+            className="bg-white rounded-2xl shadow-md p-5 flex items-center gap-5 hover:shadow-xl transition"
+          >
+            <img
+              src={item.img}
+              alt={item.title}
+              className="w-24 h-24 md:w-32 md:h-32 object-contain"
+            />
 
-            </section>
-        </>
-    )
-}
+            <div>
+              <h2 className="text-lg md:text-xl font-semibold">
+                {item.title}
+              </h2>
+              <p className="text-gray-500 text-sm mt-2 max-w-xs">
+                {item.desc}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
 
-export default Features
+      {/* RIGHT SIDE (MAIN PRODUCT) */}
+      <motion.div
+        whileHover={{ scale: 1.02 }}
+        className="bg-gradient-to-br from-black to-zinc-800 rounded-2xl p-6 flex flex-col justify-between text-white relative overflow-hidden"
+      >
+        <div>
+          <h2 className="text-2xl md:text-4xl font-light">
+            MacBook{" "}
+            <span className="font-bold text-[#fac039]">Pro</span>
+          </h2>
+
+          <p className="text-gray-300 mt-4 max-w-sm">
+            Supercharged performance with M3 chip, Retina display, and all-day battery life.
+          </p>
+
+          <button className="mt-6 bg-[#fac039] text-black px-5 py-2 rounded-lg font-semibold hover:scale-105 transition">
+            Buy Now
+          </button>
+        </div>
+
+        {/* IMAGE */}
+        <img
+          src={mackbook}
+          alt="mackbook"
+          className="absolute bottom-0 right-0 w-48 md:w-80 opacity-90"
+        />
+      </motion.div>
+    </section>
+  );
+};
+
+export default Features;

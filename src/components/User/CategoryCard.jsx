@@ -1,23 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types';
-
+import React from "react";
 
 const CategoryCard = ({ icon, title }) => {
-    return (
-        <>
+  return (
+    <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-5 flex flex-col items-center justify-center cursor-pointer hover:bg-[#fac039] hover:text-black transition-all duration-300 shadow-md hover:shadow-xl">
 
-            <div className='bg-white shadow hover:shadow-lg w-28 h-20 md:w-32 md:h-24 rounded-lg flex flex-col items-center justify-center gap-2 transition-all duration-500 cursor-pointer mb-5 md:mb-0'>
-                {icon}
-                <p className='font-semibold text-xs md:text-sm'>{title}</p>
-            </div>
+      <div className="mb-3 text-2xl">
+        {icon}
+      </div>
 
-        </>
-    )
-}
+      <h4 className="text-sm font-medium">
+        {title}
+      </h4>
 
-CategoryCard.prototype = {
-    icon : PropTypes.element.isRequired,
-    title : PropTypes.string.isRequired
-}
+    </div>
+  );
+};
 
-export default CategoryCard
+export default CategoryCard;

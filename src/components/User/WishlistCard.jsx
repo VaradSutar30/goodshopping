@@ -1,66 +1,66 @@
-import React from 'react'
-import PropTypes from 'prop-types';
-import BlackBtn from './BlackBtn';
+import React from "react";
+import PropTypes from "prop-types";
+import BlackBtn from "./BlackBtn";
 import { FaXmark } from "react-icons/fa6";
 
+const WishlistCard = ({
+  imageSrc,
+  name,
+  description,
+  price,
+  onRemove,
+  onAddToCart,
+}) => {
+  return (
+    <div className="flex items-center gap-4 p-4 border rounded-xl bg-white shadow-sm hover:shadow-md transition relative">
 
-const WishlistCard = ({ imagesrc, name, discreption, price }) => {
-    return (
-        <>
-            <div className="mt-4 mx-4">
-                <h2 className="sr-only">Recent orders</h2>
-                <div className="mx-auto max-w-8xl sm:px-2 lg:px-8">
-                    <div className="mx-auto max-w-2xl space-y-8 sm:px-4 lg:max-w-4xl lg:px-0">
-                        <div className="border border-gray-200 bg-white rounded-lg">
-                            {/* <!-- Products --> */}
-                            <h4 className="sr-only">Items</h4>
-                            <ul role="list" className="divide-y divide-gray-200">
-                                <li className="relative py-6 px-2 sm:p-6">
-                                    <div className="flex items-center sm:items-start">
-                                        <div className="relative h-28 w-28 flex-shrink-0 overflow-hidden rounded-lg sm:h-28 sm:w-28">
-                                            <img src={imagesrc} alt="Moss green canvas compact backpack with double top zipper, zipper front pouch, and matching carry handle and backpack straps." className="h-full w-full object-cover object-center" />
-                                        </div>
-                                        <div className="ml-6 mb-3 flex-1 text-sm">
-                                            <div className="font-medium text-gray-900 sm:flex sm:justify-between">
-                                                <h5 className='font-semibold md:text-2xl'>{name}</h5>
-                                            </div>
-                                            <p className="hidden text-gray-500 sm:mt-2 sm:block">{discreption}</p>
-                                            <p className="md:text-lg text-black font-medium mt-2 md:font-semibold sm:mt-2">₹{price}</p>
-                                        </div>
+      {/* IMAGE */}
+      <img
+        src={imageSrc}
+        alt={name}
+        className="w-24 h-24 object-contain rounded-lg"
+      />
 
-                                        {/* remove btn */}
-                                        <div className='cursor-pointer text-lg hover:text-zinc-500 transition-all duration-300 absolute top-4 right-4'>
-                                            <FaXmark />
-                                        </div>
-                                        {/* remove btn end */}
+      {/* DETAILS */}
+      <div className="flex-1">
+        <h3 className="font-semibold text-base md:text-lg">{name}</h3>
 
-                                        {/* add to cart btn */}
-                                        <div className='absolute bottom-4 right-4'>
-                                            <BlackBtn
-                                                title="Add to Cart"
-                                            />
-                                        </div>
-                                        {/* add to cart btn end */}
+        {description && (
+          <p className="text-sm text-gray-500 mt-1">{description}</p>
+        )}
 
+        <p className="mt-2 font-bold text-lg">₹{price}</p>
+      </div>
 
-                                    </div>
+      {/* ACTIONS */}
+      <div className="flex flex-col items-end gap-3">
 
-                                </li>
-                            </ul>
-                            {/* product end */}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </>
-    )
-}
+        {/* REMOVE */}
+        <button
+          onClick={onRemove}
+          className="text-gray-400 hover:text-red-500 transition"
+        >
+          <FaXmark size={18} />
+        </button>
+
+        {/* ADD TO CART */}
+        <BlackBtn
+          title="Add to Cart"
+          onClick={onAddToCart}
+        />
+
+      </div>
+    </div>
+  );
+};
 
 WishlistCard.propTypes = {
-    name: PropTypes.string.isRequired,
-    imagesrc: PropTypes.string,
-    discreption: PropTypes.string,
-    price: PropTypes.string
-}
+  name: PropTypes.string.isRequired,
+  imageSrc: PropTypes.string,
+  description: PropTypes.string,
+  price: PropTypes.number.isRequired,
+  onRemove: PropTypes.func,
+  onAddToCart: PropTypes.func,
+};
 
-export default WishlistCard
+export default WishlistCard;
