@@ -1,24 +1,22 @@
 import React from "react";
 import { motion } from "framer-motion";
-import mackbook from "../../assets/img/mackbook.jfif";
-import Playstation from "../../assets/img/ip.png";
-import Airpod from "../../assets/img/airpod.png";
-
-
+import macbook from "../../assets/img/mackbook.jfif";
+import iphone11 from "../../assets/img/ip.png";
+import iphone15 from "../../assets/img/iphone15.png";
 
 const Features = () => {
 
 
-
+    
   const items = [
     {
-      img: Playstation,
+      img: iphone11,
       title: "iPhone 11",
       desc: "Powerful performance with A13 Bionic chip and great camera.",
     },
     {
-      img: Airpod,
-      title: "AirPods Pro",
+      img: iphone15,
+      title: "iPhone 15",
       desc: "Immersive sound with noise cancellation and transparency mode.",
     },
   ];
@@ -52,7 +50,7 @@ const Features = () => {
         ))}
       </div>
 
-      {/* RIGHT SIDE (MAIN PRODUCT) */}
+      {/* RIGHT SIDE */}
       <motion.div
         whileHover={{ scale: 1.02 }}
         className="bg-gradient-to-br from-black to-zinc-800 rounded-2xl p-6 flex flex-col justify-between text-white relative overflow-hidden"
@@ -72,10 +70,11 @@ const Features = () => {
           </button>
         </div>
 
-        {/* IMAGE */}
+
+
         <img
-          src={mackbook}
-          alt="mackbook"
+          src={macbook}
+          alt="MacBook"
           className="absolute bottom-0 right-0 w-48 md:w-80 opacity-90"
         />
       </motion.div>

@@ -8,7 +8,7 @@ import Nothingphone2a from "../../assets/products/Nothing-Phone-2a-White.png";
 import GalaxyBookPro from "../../assets/products/galaxybook.jpg";
 import SmartWatch from "../../assets/products/smartwatch.png";
 import Laptop from "../../assets/img/laptop.png";
-import Airpod from "../../assets/img/airpod.png";
+import iphone15 from "../../assets/img/iphone15.png";
 
 function Products() {
 
@@ -61,8 +61,8 @@ function Products() {
     {
       id: 7,
       title: "Samsung AirPods",
-      price: 15000,
-      image: Airpod,
+      price: 40000,
+      image: iphone15,
       category: "Accessories",
     },
     {
