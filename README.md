@@ -1,25 +1,22 @@
-# 🧑‍💻 **Mobile Shop Website**
+🧑‍💻 Mobile Shop Website
 
-A fully responsive mobile shop website designed with a user-friendly interface and modern aesthetics. The website allows users to browse, filter, and purchase mobile products with ease. This project showcases my front-end development skills and attention to detail in creating a seamless shopping experience.
+A fully responsive mobile shop website built with a modern UI and smooth user experience. Users can browse, search, filter, and purchase mobile products easily. This project demonstrates my frontend development skills in building an attractive and functional e-commerce platform.
 
-## 📋 **Features**
-
-- **Home Page**: Displays featured products, promotions, and latest arrivals.
-- **Product Detail Page**: Detailed information about each product, including images, descriptions, specifications.
-- **Product Catalog**: A comprehensive list of products with filtering and search functionality to help users find exactly what they need.
-- **Wishlist**: Allows users to save their favorite products for future reference.
-- **Shopping Cart**: Users can add products to their cart and manage quantities.
-- **Checkout Process**: A streamlined checkout process that captures user information and processes orders.
-- **Order History**: Users can view their past orders and track their status.
-
-## **🚀 Technologies Used**
-
-- **HTML5**: For structuring the content on the web pages.
-- **CSS3 & Tailwind CSS**: For styling the website and ensuring it is responsive across all devices.
-- **JavaScript & React JS**: For adding interactivity and managing the state of the application.
-
-## ⚠️ **Note**
-
-- This project currently represents the frontend of the mobile shop website. 
-- The backend development is ongoing, and once completed, it will provide full functionality, including user authentication, order management, and more. 
-- Stay tuned for updates!
+📋 Features
+Home Page – Displays featured products, promotions, and latest arrivals
+Product Details Page – Shows product images, specifications, and descriptions
+Product Catalog – Search and filter products easily
+Wishlist – Save favorite products for future purchases
+Shopping Cart – Add/remove products and manage quantity
+Checkout Process – Simple order placement flow
+Order History – View previous orders and track status
+🚀 Technologies Used
+HTML5
+CSS3
+Tailwind CSS
+JavaScript
+React JS
+⚠️ Note
+Currently, this project includes frontend functionality only.
+Backend development is in progress.
+Future updates will include authentication, payment integration, and order management features
