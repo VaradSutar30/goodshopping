@@ -22,7 +22,7 @@ const Features = () => {
   ];
 
   return (
-    <section className="max-w-[1300px] mx-auto px-4 py-12 grid md:grid-cols-2 gap-6">
+    <section className="max-w-[10000px] mx-auto px-4 py-12 grid md:grid-cols-2 gap-6">
 
       {/* LEFT SIDE */}
       <div className="flex flex-col gap-6">

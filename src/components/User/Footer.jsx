@@ -22,19 +22,43 @@ import {
             </p>
   
             {/* SOCIAL */}
-            <div className="flex gap-4 mt-6">
-              {[TbBrandGithubFilled, FaLinkedinIn, RiInstagramFill].map((Icon, i) => (
-                <motion.a
-                  key={i}
-                  href="#"
-                  target="_blank"
-                  whileHover={{ scale: 1.2 }}
-                  className="bg-zinc-800 p-2 rounded-full hover:bg-[#fac039] hover:text-black transition"
-                >
-                  <Icon size={18} />
-                </motion.a>
-              ))}
-            </div>
+            {/* SOCIAL */}
+<div className="flex gap-4 mt-6">
+
+  {/* Github */}
+  <motion.a
+    href="https://github.com/VaradSutar30"
+    target="_blank"
+    rel="noopener noreferrer"
+    whileHover={{ scale: 1.2 }}
+    className="bg-zinc-800 p-2 rounded-full hover:bg-[#fac039] hover:text-black transition"
+  >
+    <TbBrandGithubFilled size={18} />
+  </motion.a>
+
+  {/* LinkedIn */}
+  <motion.a
+    href="https://linkedin.com/in/varad-sutar-8a936b287"
+    target="_blank"
+    rel="noopener noreferrer"
+    whileHover={{ scale: 1.2 }}
+    className="bg-zinc-800 p-2 rounded-full hover:bg-[#fac039] hover:text-black transition"
+  >
+    <FaLinkedinIn size={18} />
+  </motion.a>
+
+  {/* Instagram */}
+  <motion.a
+    href="https://instagram.com/_varadsutar_"
+    target="_blank"
+    rel="noopener noreferrer"
+    whileHover={{ scale: 1.2 }}
+    className="bg-zinc-800 p-2 rounded-full hover:bg-[#fac039] hover:text-black transition"
+  >
+    <RiInstagramFill size={18} />
+  </motion.a>
+
+</div>
           </div>
   
           {/* SERVICES */}
